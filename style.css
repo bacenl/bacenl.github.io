@@ -1,0 +1,128 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    word-break: keep-all;
+    font-feature-settings: normal;
+    text-rendering: optimizeLegibility
+}
+
+
+
+body {
+    background-color: #fffff5;
+    color: #575757;
+    background-image: none;
+    background-position: top left;
+    background-size: auto;
+    background-attachment: scroll;
+    background-repeat: repeat;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    line-height: 1.8em;
+    text-transform: none;
+    text-decoration: none;
+    font-weight: 100;
+    font-style: normal;
+}
+
+p {
+    font-weight: normal;
+    line-height: 1.6em;
+    font-size: 12px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    line-height: 1.8em;
+    text-transform: none;
+    text-decoration: none;
+    font-weight: 100;
+    font-style: normal;
+    margin: 0 0 1em;
+}
+
+a {
+    color: #e4e5e6;
+    text-decoration: none;
+    cursor: pointer
+}
+
+h1{
+    font-family: "futura-pt", sans-serif;
+    font-size: 2em;
+    line-height: 1.5em;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: .06em;
+    font-weight: 300;
+    font-style: normal;
+}
+
+#main-container {
+    margin-top: 90px;
+    margin-bottom: 50px
+}
+
+#top-container {
+    position: fixed;
+    padding-bottom: 5px;
+    z-index: 999
+}
+
+#top-container h1 {
+    font-size: 24px;
+    display: inline;
+    font-weight: 700
+}
+
+#top-container small {
+    display: block;
+    font-size: 13px;
+    font-weight: 400
+}
+
+#top-container .logo-link span {
+    font-size: 14px;
+    font-weight: 400
+}
+
+#top-container .logo-link:focus,#top-container .logo-link:hover {
+    color: #3a3b3c;
+    text-shadow: 1px 1px 0 #e4e5e6,-1px 1px 0 #e4e5e6,-1px -1px 0 #e4e5e6,1px -1px 0 #e4e5e6
+}
+
+#top-container .info-link:focus,#top-container .info-link:hover {
+    color: #3a3b3c;
+    background-color: #e4e5e6
+}
+
+#about-container p,#about-container ul {
+    margin-bottom: 30px;
+    font-size: 16px
+}
+
+#about-container ul {
+    list-style: none inside none
+}
+
+#about-container ul li {
+    margin-bottom: 5px
+}
+
+#about-container a {
+    text-decoration: underline
+}
+
+#about-container a:focus,#about-container a:hover {
+    text-decoration: none;
+    background-color: #e4e5e6;
+    color: #18191a
+}
+
+#main-container code,#main-container code span {
+    font-family: Consolas,Monaco,'Ubuntu Mono','Andale Mono',monospace
+}
+
+#main-container li code,#main-container p code {
+    background-color: #363636;
+    padding: 0 5px 0 5px
+}
