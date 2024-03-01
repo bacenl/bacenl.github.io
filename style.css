@@ -15,6 +15,7 @@ header{
     justify-content: space-between;
     align-items: center;
     z-index: 100;
+    white-space: nowrap;
 }
 
 .header-name{
@@ -30,22 +31,29 @@ header{
     color:#2b2929;
 }
 
+
+.main-nav{
+    margin:10px 10px;
+}
 .nav-item{
-    margin: 2px 10px;
+    margin: 10px 10px;
     font-size: 1rem;
     color: #737373;
     font-family: "futura-pt", sans-serif;
     font-weight: 100;
 }
 
-.on-current{
-    color:#2b2929;
-}
-
 .nav-item:hover{
     text-decoration: underline;
     color:#2b2929;
 }
+
+.on-current{
+    color:#2b2929;
+}
+
+
+
 
 body {
     padding-top: 100px;
@@ -124,39 +132,6 @@ hr {
     max-width: 750px;
     position: relative;
 }
-
-@media (min-width: 992px){
-    .container, .container-lg, .container-md, .container-sm {
-    max-width: 960px;}
-}
-
-@media (min-width: 768px){
-    .container, .container-md, .container-sm {
-        max-width: 720px;
-    }
-}
-
-@media (min-width: 576px){
-    .container, .container-sm {
-        max-width: 540px;
-    }
-}
-
-.text-nowrap{
-    white-space: nowrap!important;
-}
-
-@media (min-width: 576px){
-    .flex-sm-row {
-        -ms-flex-direction: row!important;
-        flex-direction: row!important;
-    }
-}   
-.flex-column {
-    -ms-flex-direction: column!important;
-    flex-direction: column!important;
-}
-
 .flex{
     display:flex;
 }
@@ -167,12 +142,20 @@ hr {
 #about-image-div{
     flex:1;
 }
+#about-contact{
+    font-size: 14px;
+    color:#2b2929;
+    font-weight: bold;
+}
+#about-contact:hover{
+    text-decoration: underline;
+}
 
 
 
 @media only screen and (max-width: 750px){
     header{
-        flex-direction: row;
+        flex-direction: column;
     }
     .flex{
         display:block;
