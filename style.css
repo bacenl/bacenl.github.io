@@ -142,6 +142,9 @@ hr {
 #about-image-div{
     flex:1;
 }
+.about-image{
+    max-width: 500px;
+}
 #about-contact{
     font-size: 14px;
     color:#2b2929;
