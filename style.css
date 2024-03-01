@@ -148,7 +148,6 @@ hr {
     max-height: 100%;
 }
 #about-contact{
-    font-size: 14px;
     color:#2b2929;
     font-weight: bold;
 }
@@ -228,4 +227,7 @@ hr {
 
 .center{
     margin:auto;
+}
+.center-text{
+    text-align:center;
 }
