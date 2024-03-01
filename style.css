@@ -9,9 +9,17 @@
 
 header{
     margin-bottom: 40px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
 }
 
 body {
+    padding-top: 100px;
     background-color: #fffffa;
     color: #737373;
     background-image: none;
@@ -79,9 +87,16 @@ hr {
     border-width: 1px;
 }
 
+.canvas{
+    max-width: 1200px;
+    margin: 10px auto;
+    padding: 75px;
+}
+
 .container {
     background-color: #18191a;
     max-width: 750px;
+    position: relative;
 }
 
 @media (min-width: 992px){
@@ -127,33 +142,6 @@ nav ul, nav ol {
     font-size: 2rem;
     float:left;
 }
-
-.navbar-links{
-    position: relative;
-    z-index: 890;
-    float:right;
-    font-family: Georgia,serif;
-    font-weight: normal;
-    font-style: italic;
-    text-transform: none;
-    letter-spacing: 0px;
-    font-family: "futura-pt";
-    font-size: 13px;
-    line-height: 1.6em;
-    text-transform: uppercase;
-    text-decoration: none;
-    letter-spacing: 1px;
-    font-weight: 400;
-    font-style: normal;
-}
-
-#navbar-links nav ul li {
-    float: left;
-    position: relative;
-    margin-right: 30px;
-}
-
-
 
 
 
