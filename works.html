@@ -1,69 +1,55 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+        <link rel="stylesheet" href="./style.css">
     </head>
 
     <body>
-        <header>
-            <div>
-                <a>BACEN</a>
-            </div>
-            <div>
-                <nav data-content-field="navigation">
-                    <ul>
-                        <li>
-                            <a href="">About</a>
-                        </li>
-                        <span>/</span>
-                        <li>
-                            <a href="">Works</a>
-                        </li>
-                        <span>/</span>
-                        <li>
-                            <a href="">Blog</a>
-                        </li>
-                        <span>/</span>
-                        <li>
-                            <a href="">Contact</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-        <div>
-            <div>
-                <h1>WORKS</h1>
-                <nav data-content-field="navigation">
-                    <ul>
-                        <li>
-                            <a href="">Apps</a>
-                        </li>
-                        <span>/</span>
-                        <li>
-                            <a href="">Games</a>
-                        </li>
-                        <span>/</span>
-                        <li>
-                            <a href="">Art</a>
-                        </li>
-                    </ul>
-                </nav>
-                <a href="">
-                    <div>
-                        <img>
-                        <h1>Gr*ndr</h1>
-                        <p>(NOT ACTUALLY GRINDR) TODO-list</p>
-                    </div>
-                </a>
 
-                <a href="">
-                    <div>
-                        <img>
-                        <h1>Securus</h1>
-                        <p>Interactive learning app for cybersecurity awareness</p>
-                    </div>
-                </a>
+        <div class="canvas">
+            <header>
+                <div>
+                    <a class="header-name" href="bacenl.github.io">BACEN</a>
+                </div>
+                <nav class="main-nav" data-content-field="navigation">
+                    <a class="nav-item on-current" href="bacenl.github.io">ABOUT</a>
+                    <span>/</span>
+                    <a class="nav-item" href="bacenl.github.io/works">WORKS</a>
+                    <span>/</span>
+                    <a class="nav-item" href="bacenl.github.io/blog">BLOG</a>
+                    <span>/</span>
+                    <a class="nav-item" href="bacenl.github.io/contact">CONTACT</a>
+                </nav>
+            </header>
+            <div class="flex">
+                <div id="about-body-div">
+                    <h1 class="header-h1">ABOUT</h1>
+                    <p>bacen (bacenl if username is taken) here!</p>
+                    <p>I'm a 1st-year CS student interested in:</p> 
+                    <ul>
+                        <li>Software engineering</li>
+                        <li>Design</li>
+                        <li>Game making</li>
+                        <li>Data/ AI</li>
+                    </ul>
+                    <p>So far I've only got professional experience in data/ AI, but am always down to do new things</p>
+                    <hr>
+                    <p>things (non-cs) i also do:</p>
+                    <ul>
+                        <li>drawing</li>
+                        <li>music (guitar/sing)</li>
+                        <li>vidya games (ffxiv raiding, dota 2)</li>
+                        <li>and a bunch of other things if im feeling it</li>
+                    </ul>
+                    <p>the kinda person who jumps hobbies more than the amount of times i'd tell myself i'd finish this website (a lot) but hey it's finally up</p>
+                    <hr>
+                    <p>This site is to log some of my thought processes when making stuff and to share some of my experiences</p>
+                    <p>Wanna reach out? Find my contacts <a id="about-contact" href="">here</a></p>
+                </div>
+                <div id="about-image-div">
+                    <img id="about-image" src='resources/bacen.png'>
+                </div>
+                
             </div>
         </div>
     </body>
