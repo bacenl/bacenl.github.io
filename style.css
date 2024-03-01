@@ -49,7 +49,8 @@ header{
 }
 
 .on-current{
-    color:#2b2929;
+    font-weight: bold;
+    color:#1d1b1b;
 }
 
 
@@ -143,7 +144,8 @@ hr {
     flex:1;
 }
 .about-image{
-    max-width: 500px;
+    max-width: 100%;
+    max-height: 100%;
 }
 #about-contact{
     font-size: 14px;
@@ -156,6 +158,57 @@ hr {
 
 
 
+
+
+
+
+
+.works-post-link{
+    color:#1d1b1b
+}
+
+.works-list-item{
+    display: block;
+    list-style: none;
+}
+
+
+
+
+
+
+
+
+
+
+.blog-post-link{
+    color:#1d1b1b
+}
+
+.blog-list-item{
+    display: block;
+    list-style: none;
+}
+
+.blog-container h1{
+    display: inline;
+
+}
+
+
+.blog-container h2{
+    display: inline;
+
+}
+
+
+
+
+
+
+
+
+
 @media only screen and (max-width: 750px){
     header{
         flex-direction: column;
@@ -163,4 +216,16 @@ hr {
     .flex{
         display:block;
     }
+}
+
+
+
+
+
+
+
+
+
+.center{
+    margin:auto;
 }
