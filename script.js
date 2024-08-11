@@ -1,11 +1,11 @@
-// Upon init, load the navbar and home page
+// Upon init, load the main header
 fetch('../templates/main_header.html')
 .then(response => response.text())
 .then(data => {
     document.getElementById('main-header').innerHTML = data;
 });
 
-// Upon init, load the navbar and home page
+// Upon init, load the work header (if applicable)
 fetch('../templates/work_header.html')
 .then(response => response.text())
 .then(data => {
