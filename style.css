@@ -73,9 +73,8 @@ body {
 p {
     font-weight: normal;
     line-height: 1.6em;
-    font-size: 12px;
     font-family: "Montserrat", sans-serif;
-    font-size: 15px;
+    font-size: 18px;
     line-height: 1.8em;
     text-transform: none;
     text-decoration: none;
@@ -181,8 +180,8 @@ hr {
 
 .works-list-item-img-holder{
     display: inline-block;
-    height:100px;
-    width:275px;
+    height:150px;
+    width:300px;
     vertical-align: middle;
 }
 
@@ -220,7 +219,23 @@ hr {
 }
 
 
+.works-page-img{
+    margin:auto;
+    margin-bottom: 2em;
+    vertical-align: middle;
+    width:100%;
+}
 
+
+.work-link{
+    border-bottom: 1px solid currentColor; 
+    color:#4e5153;
+}
+
+.work-link:hover{
+    border-bottom: 1px solid currentColor; 
+    color:#18191a;
+}
 
 
 
@@ -257,9 +272,12 @@ hr {
 @media only screen and (max-width: 750px){
     header{
         flex-direction: column;
+        margin-bottom:1.5em;
     }
     .flex{
-        display:block;
+        margin-top:0;
+        display: flex;
+        flex-direction: column-reverse;
     }
     #about-body-div{
         padding-right:50px;
@@ -276,6 +294,7 @@ hr {
 
 .contacts-link{
     border-bottom: 1px solid currentColor; 
+    color:#4e5153;
 }
 
 .contacts-link:hover{

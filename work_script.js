@@ -36,8 +36,9 @@ function loadContentByHash(hash) {
       .then(response => response.text())
       .then(data => {
         document.querySelector('.works-container').innerHTML = data;
-        if(contentFile == 'software'):
+        if(contentFile == 'software' || contentFile == 'games' || contentFile == 'design'){
           updateActiveNavLink('#' + contentFile);
+        }
         console.log(contentFile)
       })
       .catch(err => {
