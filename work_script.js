@@ -11,6 +11,7 @@ window.addEventListener('load', () => {
 
 window.addEventListener('hashchange', () => {
     loadContentByHash(window.location.hash);
+    console.log(window.location.hash)
     });
 
 
@@ -35,7 +36,9 @@ function loadContentByHash(hash) {
       .then(response => response.text())
       .then(data => {
         document.querySelector('.works-container').innerHTML = data;
-        updateActiveNavLink('#' + contentFile);
+        if(contentFile == 'software'):
+          updateActiveNavLink('#' + contentFile);
+        console.log(contentFile)
       })
       .catch(err => {
         console.error('Failed to load the content:', err);
