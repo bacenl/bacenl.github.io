@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const allTags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
+---
+<BaseLayout title="Blog" description="Writing on software, design, games, and the occasional thing.">
+  <div class="canvas">
+    <h1 class="header-h1">BLOG</h1>
+    <nav class="blog-sort-nav" aria-label="Sort and filter posts">
+      <div class="blog-sort-group">
+        <button class="sort-btn active" id="sort-newest" aria-pressed="true">NEWEST</button>
+        <span aria-hidden="true">/</span>
+        <button class="sort-btn" id="sort-oldest" aria-pressed="false">OLDEST</button>
+      </div>
+      <div class="blog-tag-group">
+        <button class="sort-btn active" data-tag="" aria-pressed="true">ALL</button>
+        {allTags.map((tag) => (
+          <>
+            <span aria-hidden="true">/</span>
+            <button class="sort-btn" data-tag={tag} aria-pressed="false">#{tag}</button>
+          </>
+        ))}
+      </div>
+    </nav>
+    <ul class="blog-list" id="blog-list">
+      {posts.map((post) => (
+        <BlogCard
+          title={post.data.title}
+          description={post.data.description}
+          date={post.data.date}
+          tags={post.data.tags}
+          href={`/blog/${post.slug}`}
+        />
+      ))}
+    </ul>
+  </div>
+</BaseLayout>
+
+<script>
+  const list = document.getElementById('blog-list') as HTMLUListElement;
+  const btnNewest = document.getElementById('sort-newest') as HTMLButtonElement;
+  const btnOldest = document.getElementById('sort-oldest') as HTMLButtonElement;
+  const tagButtons = document.querySelectorAll<HTMLButtonElement>('[data-tag]');
+
+  let currentSort: 'newest' | 'oldest' = 'newest';
+  let currentTag = ''; // empty string = all
+
+  function getItems() {
+    return Array.from(list.querySelectorAll<HTMLLIElement>('.blog-list-item'));
+  }
+
+  function render() {
+    const items = getItems();
+
+    // 1. Filter: show/hide based on active tag
+    items.forEach((item) => {
+      const tags: string[] = JSON.parse(item.dataset.tags ?? '[]');
+      item.style.display =
+        currentTag === '' || tags.includes(currentTag) ? '' : 'none';
+    });
+
+    // 2. Sort visible items in place
+    const visible = items.filter((item) => item.style.display !== 'none');
+    visible
+      .sort((a, b) => {
+        const da = new Date(a.dataset.date!).valueOf();
+        const db = new Date(b.dataset.date!).valueOf();
+        return currentSort === 'newest' ? db - da : da - db;
+      })
+      .forEach((item) => list.appendChild(item));
+  }
+
+  function setActiveSort(active: HTMLButtonElement, inactive: HTMLButtonElement) {
+    active.classList.add('active');
+    active.setAttribute('aria-pressed', 'true');
+    inactive.classList.remove('active');
+    inactive.setAttribute('aria-pressed', 'false');
+  }
+
+  function setActiveTag(active: HTMLButtonElement) {
+    tagButtons.forEach((btn) => {
+      btn.classList.toggle('active', btn === active);
+      btn.setAttribute('aria-pressed', btn === active ? 'true' : 'false');
+    });
+  }
+
+  btnNewest.addEventListener('click', () => {
+    currentSort = 'newest';
+    setActiveSort(btnNewest, btnOldest);
+    render();
+  });
+
+  btnOldest.addEventListener('click', () => {
+    currentSort = 'oldest';
+    setActiveSort(btnOldest, btnNewest);
+    render();
+  });
+
+  tagButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      currentTag = btn.dataset.tag ?? '';
+      setActiveTag(btn);
+      render();
+    });
+  });
+</script>

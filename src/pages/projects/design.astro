@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectsNav from '../../components/ProjectsNav.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects'))
+  .filter((p) => p.data.category === 'design')
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<BaseLayout title="Projects — Design">
+  <div class="canvas">
+    <h1 class="header-h1">PROJECTS</h1>
+    <ProjectsNav />
+    <ul class="works-list">
+      {projects.map((p) => (
+        <ProjectCard
+          title={p.data.title}
+          description={p.data.description}
+          coverImage={p.data.coverImage}
+          href={`/projects/${p.slug}`}
+        />
+      ))}
+    </ul>
+  </div>
+</BaseLayout>

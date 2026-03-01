@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const interests = [
+  'Software Engineering',
+  'Data / AI',
+  'Design',
+  'Game Making',
+];
+
+const hobbies = [
+  'Games (dota 2, ffxiv, hearthstone battlegrounds)',
+  'Drawing',
+  'Music (guitar / sing)',
+  'Random things, if im feeling it',
+];
+---
+<BaseLayout title="About" description="bacenl — Computer Science student interested in software, AI, design, and game making.">
+  <div class="canvas">
+    <div class="about-layout">
+      <div class="about-body">
+        <h1 class="header-h1">ABOUT</h1>
+        <p>Hi, I'm bacen.</p>
+        <p>I'm a 2nd-year CS student interested in:</p>
+        <ul id="interest-list" class="cycle-list">
+          {interests.map((skill) => <li>{skill}</li>)}
+        </ul>
+        <p>I have professional experience in data / AI / SWE, but am interested in doing new things.</p>
+        <hr />
+        <p>Other things I also do:</p>
+        <ul id="hobby-list" class="cycle-list">
+          {hobbies.map((hobby) => <li>{hobby}</li>)}
+        </ul>
+        <hr />
+        <p>This site is to log some of my thought processes when making stuff and to share some of my experiences.</p>
+        <p>Want to reach out? Find my contacts <a id="about-contact" href="/contact">here</a>.</p>
+      </div>
+      <div class="about-image-wrap">
+        <img class="about-image" src="/resources/bacen.png" alt="bacen" />
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+

@@ -1,0 +1,38 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import TagBadge from '../components/TagBadge.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  lastUpdated?: Date;
+  tags: string[];
+}
+
+const { title, description, date, lastUpdated, tags } = Astro.props;
+
+const fmt = (d: Date) =>
+  new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).format(d);
+---
+<BaseLayout title={title} description={description}>
+  <div class="canvas">
+    <a class="back-link" href="/blog">← BACK TO BLOG</a>
+    <h1 class="header-h1">{title}</h1>
+    <div class="blog-post-meta" style="margin-bottom: 4px;">
+      <time class="blog-post-date" datetime={date.toISOString()}>{fmt(date)}</time>
+    </div>
+    {lastUpdated && (
+      <p class="blog-updated">Updated {fmt(lastUpdated)}</p>
+    )}
+    {tags.length > 0 && (
+      <div class="tags-list" style="margin: 12px 0 2rem;">
+        {tags.map((tag) => <TagBadge tag={tag} />)}
+      </div>
+    )}
+    <hr />
+    <div class="blog-post-content">
+      <slot />
+    </div>
+  </div>
+</BaseLayout>

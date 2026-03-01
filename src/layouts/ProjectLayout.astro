@@ -1,0 +1,43 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  coverImage: string;
+  screenshotImage?: string;
+  externalLink?: string;
+  externalLinkLabel?: string;
+  category: 'software' | 'design' | 'games';
+}
+
+const {
+  title,
+  description,
+  coverImage,
+  screenshotImage,
+  externalLink,
+  externalLinkLabel,
+  category,
+} = Astro.props;
+
+// Prefer the full screenshot on the detail page; fall back to the cover thumbnail
+const displayImage = screenshotImage ?? coverImage;
+---
+<BaseLayout title={title} description={description}>
+  <div class="canvas">
+    <a class="back-link" href={`/projects/${category}`}>← BACK TO PROJECTS</a>
+    <h1 class="header-h1">{title}</h1>
+    <img class="works-page-img" src={displayImage} alt={`Screenshot of ${title}`} />
+    <div class="blog-post-content">
+      <slot />
+    </div>
+    {externalLink && (
+      <h2 style="margin-top: 1.5rem;">
+        <a class="work-link" href={externalLink} target="_blank" rel="noopener noreferrer">
+          {externalLinkLabel ?? 'View project'}
+        </a>
+      </h2>
+    )}
+  </div>
+</BaseLayout>

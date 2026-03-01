@@ -1,0 +1,33 @@
+---
+import TagBadge from './TagBadge.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  tags: string[];
+  href: string;
+}
+
+const { title, description, date, tags, href } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}).format(date);
+---
+<li class="blog-list-item" data-date={date.toISOString()} data-tags={JSON.stringify(tags)}>
+  <a class="blog-post-link" href={href}>
+    <h2 class="blog-post-title">{title}</h2>
+    <div class="blog-post-meta">
+      <time class="blog-post-date" datetime={date.toISOString()}>{formattedDate}</time>
+      {tags.length > 0 && (
+        <div class="tags-list">
+          {tags.map((tag) => <TagBadge tag={tag} />)}
+        </div>
+      )}
+    </div>
+    <p class="blog-post-desc">{description}</p>
+  </a>
+</li>
