@@ -1,0 +1,152 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import BlogCard from '../components/BlogCard.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  title: string;
+  description?: string;
+  posts: CollectionEntry<'blog'>[];
+  allTags: string[];
+  activeTag?: string;
+}
+
+const { title, description, posts, allTags, activeTag = '' } = Astro.props;
+---
+<BaseLayout title={title} description={description}>
+  <div class="canvas">
+    <h1 class="header-h1">BLOG</h1>
+    <div class="blog-controls">
+
+      <!-- Sort dropdown -->
+      <div class="blog-control">
+        <span class="blog-control-label">SORT BY</span>
+        <div class="custom-select" id="sort-select">
+          <button class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+            <span class="custom-select-value">Newest</span>
+            <span class="custom-select-arrow" aria-hidden="true">▾</span>
+          </button>
+          <ul class="custom-select-menu" role="listbox">
+            <li role="option"><button class="custom-select-option active" data-value="newest">Newest</button></li>
+            <li role="option"><button class="custom-select-option" data-value="oldest">Oldest</button></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Tag dropdown -->
+      <div class="blog-control">
+        <span class="blog-control-label">TAG</span>
+        <div class="custom-select" id="tag-select">
+          <button class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+            <span class="custom-select-value">{activeTag ? `#${activeTag}` : 'All'}</span>
+            <span class="custom-select-arrow" aria-hidden="true">▾</span>
+          </button>
+          <ul class="custom-select-menu" role="listbox">
+            <li role="option">
+              <button class:list={['custom-select-option', { active: !activeTag }]} data-value="">All</button>
+            </li>
+            {allTags.map((tag) => (
+              <li role="option">
+                <button class:list={['custom-select-option', { active: tag === activeTag }]} data-value={tag}>#{tag}</button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    <ul class="blog-list" id="blog-list">
+      {posts.map((post) => (
+        <BlogCard
+          title={post.data.title}
+          description={post.data.description}
+          date={post.data.date}
+          tags={post.data.tags}
+          href={`/blog/${post.slug}`}
+        />
+      ))}
+    </ul>
+  </div>
+</BaseLayout>
+
+<script define:vars={{ initialTag: activeTag }}>
+  // ── Custom select initialiser ──────────────────────────────
+  function initSelect(id, onChange) {
+    const container = document.getElementById(id);
+    const trigger   = container.querySelector('.custom-select-trigger');
+    const valueEl   = container.querySelector('.custom-select-value');
+    const options   = container.querySelectorAll('.custom-select-option');
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const opening = !container.classList.contains('open');
+      document.querySelectorAll('.custom-select.open').forEach((el) => {
+        el.classList.remove('open');
+        el.querySelector('.custom-select-trigger')?.setAttribute('aria-expanded', 'false');
+      });
+      if (opening) {
+        container.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    options.forEach((option) => {
+      option.addEventListener('click', () => {
+        options.forEach((o) => o.classList.remove('active'));
+        option.classList.add('active');
+        valueEl.textContent = option.textContent;
+        container.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+        onChange(option.dataset.value ?? '');
+      });
+    });
+
+    container.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        container.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+        trigger.focus();
+      }
+    });
+  }
+
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.custom-select.open').forEach((el) => {
+      el.classList.remove('open');
+      el.querySelector('.custom-select-trigger')?.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // ── Sort + filter state ────────────────────────────────────
+  let currentSort = 'newest';
+  let currentTag  = initialTag;
+
+  function getItems() {
+    return Array.from(document.querySelectorAll('#blog-list .blog-list-item'));
+  }
+
+  function render() {
+    const items = getItems();
+
+    items.forEach((item) => {
+      const tags = JSON.parse(item.dataset.tags ?? '[]');
+      item.style.display =
+        currentTag === '' || tags.includes(currentTag) ? '' : 'none';
+    });
+
+    items
+      .filter((item) => item.style.display !== 'none')
+      .sort((a, b) => {
+        const da = new Date(a.dataset.date).valueOf();
+        const db = new Date(b.dataset.date).valueOf();
+        return currentSort === 'newest' ? db - da : da - db;
+      })
+      .forEach((item) => document.getElementById('blog-list').appendChild(item));
+  }
+
+  initSelect('sort-select', (value) => { currentSort = value; render(); });
+  initSelect('tag-select',  (value) => { currentTag  = value; render(); });
+
+  // Apply initial tag filter if arriving on a tag page
+  render();
+</script>

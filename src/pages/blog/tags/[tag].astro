@@ -1,39 +1,25 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import BlogCard from '../../../components/BlogCard.astro';
+import BlogListLayout from '../../../layouts/BlogListLayout.astro';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
-  const allTags = [...new Set(posts.flatMap((p) => p.data.tags))];
+  const allPosts = (await getCollection('blog')).sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+  );
+  const allTags = [...new Set(allPosts.flatMap((p) => p.data.tags))].sort();
 
   return allTags.map((tag) => ({
     params: { tag },
-    props: {
-      tag,
-      posts: posts
-        .filter((p) => p.data.tags.includes(tag))
-        .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()),
-    },
+    props: { tag, posts: allPosts, allTags },
   }));
 }
 
-const { tag, posts } = Astro.props;
+const { tag, posts, allTags } = Astro.props;
 ---
-<BaseLayout title={`#${tag}`} description={`Posts tagged #${tag}`}>
-  <div class="canvas">
-    <a class="back-link" href="/blog">← BACK TO BLOG</a>
-    <h1 class="header-h1">#{tag}</h1>
-    <ul class="blog-list">
-      {posts.map((post) => (
-        <BlogCard
-          title={post.data.title}
-          description={post.data.description}
-          date={post.data.date}
-          tags={post.data.tags}
-          href={`/blog/${post.slug}`}
-        />
-      ))}
-    </ul>
-  </div>
-</BaseLayout>
+<BlogListLayout
+  title={`#${tag}`}
+  description={`Posts tagged #${tag}`}
+  posts={posts}
+  allTags={allTags}
+  activeTag={tag}
+/>
