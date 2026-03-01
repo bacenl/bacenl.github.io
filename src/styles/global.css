@@ -167,6 +167,7 @@ hr {
 .about-image {
   max-width: 100%;
   display: block;
+  border-radius: 3px;
 }
 
 #about-contact {
@@ -203,6 +204,8 @@ hr {
   position: relative;
   margin-bottom: 1rem;
   border: 1px solid var(--color-border);
+  border-radius: 5px;
+  overflow: hidden;
   transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
@@ -242,7 +245,6 @@ hr {
   object-fit: contain;
   object-position: center;
   display: block;
-  background-color: var(--color-bg);
 }
 
 .works-list-item-block2 {
@@ -401,6 +403,8 @@ hr {
   display: block;
   margin-bottom: 1rem;
   border: 1px solid var(--color-border);
+  border-radius: 5px;
+  overflow: hidden;
   transition: border-color 0.2s ease, background-color 0.2s ease;
   padding: 1.4rem 1.6rem;
 }
@@ -574,9 +578,10 @@ hr {
     --header-height: auto;
   }
 
+  /* Header — centred */
   .header-inner {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     padding: 14px 24px 10px;
     gap: 6px;
     height: auto;
@@ -588,21 +593,64 @@ hr {
 
   .main-nav {
     flex-wrap: wrap;
+    justify-content: center;
   }
 
+  /* Page titles — centred */
+  .header-h1 {
+    text-align: center;
+  }
+
+  /* Back link — centred */
+  .back-link {
+    display: block;
+    text-align: center;
+  }
+
+  /* Blog controls — centred */
+  .blog-controls {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  /* Blog card meta — centred */
+  .blog-post-meta {
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .blog-post-title {
+    text-align: center;
+  }
+
+  .blog-post-desc {
+    text-align: center;
+  }
+
+  /* Tags — centred */
+  .tags-list {
+    justify-content: center;
+  }
+
+  /* About page */
   .about-layout {
     flex-direction: column-reverse;
     gap: 20px;
+    align-items: center;
   }
 
   .about-image-wrap {
     width: 100%;
     max-width: 280px;
+    margin: 0 auto;
   }
 
+  /* Project cards — centred when stacked */
   .works-list-item-link {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 12px;
   }
 
@@ -616,16 +664,12 @@ hr {
   .works-list-item-desc {
     margin-left: 0;
     margin-right: 0;
+    text-align: center;
   }
 
+  /* Projects sub-nav — already centred */
   .work-nav {
     justify-content: center;
-  }
-
-  .blog-post-meta {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
   }
 
   .footer-inner {
