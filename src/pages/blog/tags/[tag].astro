@@ -22,6 +22,7 @@ const { tag, posts } = Astro.props;
 ---
 <BaseLayout title={`#${tag}`} description={`Posts tagged #${tag}`}>
   <div class="canvas">
+    <a class="back-link" href="/blog">← BACK TO BLOG</a>
     <h1 class="header-h1">#{tag}</h1>
     <ul class="blog-list">
       {posts.map((post) => (
