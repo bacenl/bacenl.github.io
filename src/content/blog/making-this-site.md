@@ -1,12 +1,19 @@
 ---
-title: making this site
+title: Hello World!
 tags:
-  - meta
   - web
-date: 2024-03-01
-description: the process of putting this portfolio together
+date: 2026-03-01
+description: My first blog post
 ---
 
-Some notes on putting this site together.
+This site was something that I have been procrastinating on for quite some time. 
 
-*(Content coming soon.)*
+Initially (2023 or something), I just raw-dogged the site using HTML, CSS, and bare minimum Javascript.
+
+It was most definitely not maintainable, but hey, it was good enough!
+
+\
+But hooray! It's finally up now!
+
+Thanks to [Astro](https://astro.build/), I no longer have a spaghetti personal site. :)
+
