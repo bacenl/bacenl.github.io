@@ -17,6 +17,7 @@ const projects = (await getCollection('projects'))
         <ProjectCard
           title={p.data.title}
           description={p.data.description}
+          highlight={p.data.highlight}
           coverImage={p.data.coverImage}
           href={`/projects/${p.slug}`}
         />

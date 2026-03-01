@@ -6,11 +6,9 @@ const projects = defineCollection({
     title: z.string(),
     category: z.enum(['software', 'design', 'games']),
     coverImage: z.string(),
-    screenshotImage: z.string().optional(),
     date: z.coerce.date(),
     description: z.string(),
-    externalLink: z.string().url().optional(),
-    externalLinkLabel: z.string().optional(),
+    highlight: z.string().optional(),
   }),
 });
 

@@ -261,6 +261,16 @@ hr {
   margin: 0 10px;
 }
 
+.works-list-item-highlight {
+  margin: 2px 10px 4px;
+  font-size: 0.8rem;
+  color: var(--color-text-dark);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 .works-list-item-desc {
   margin: 4px 10px 0;
   font-size: 1rem;
@@ -277,12 +287,14 @@ hr {
   margin-bottom: 2em;
 }
 
-.work-link {
+.work-link,
+.blog-post-content a {
   border-bottom: 1px solid currentColor;
   color: var(--color-link);
 }
 
-.work-link:hover {
+.work-link:hover,
+.blog-post-content a:hover {
   color: var(--color-text-darker);
 }
 
@@ -471,6 +483,12 @@ hr {
 
 .blog-post-content p {
   margin-bottom: 1rem;
+}
+
+.blog-post-content img {
+  display: block;
+  width: 100%;
+  margin-bottom: 2em;
 }
 
 .blog-updated {
@@ -667,6 +685,7 @@ hr {
   }
 
   .works-list-item-title,
+  .works-list-item-highlight,
   .works-list-item-desc {
     margin-left: 0;
     margin-right: 0;

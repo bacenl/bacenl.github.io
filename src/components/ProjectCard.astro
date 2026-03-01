@@ -2,11 +2,12 @@
 interface Props {
   title: string;
   description: string;
+  highlight?: string;
   coverImage: string;
   href: string;
 }
 
-const { title, description, coverImage, href } = Astro.props;
+const { title, description, highlight, coverImage, href } = Astro.props;
 ---
 <li class="works-list-item">
   <a class="works-list-item-link" href={href}>
@@ -21,7 +22,12 @@ const { title, description, coverImage, href } = Astro.props;
     </div>
     <div class="works-list-item-block2">
       <h1 class="works-list-item-title">{title}</h1>
-      <h2 class="works-list-item-desc">{description}</h2>
+      {highlight && <p class="works-list-item-highlight">{highlight}</p>}
+      <h2 class="works-list-item-desc">
+        {description.split('\n').map((line, i) => (
+          <>{i > 0 && <br />}{line}</>
+        ))}
+      </h2>
     </div>
   </a>
 </li>
