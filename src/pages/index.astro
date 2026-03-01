@@ -8,10 +8,19 @@ const interests = [
   'Game Making',
 ];
 
+const learning = [
+  'C++',
+  'Unreal Engine',
+  'AI Workflows',
+  'How to not be a bum',
+];
+
 const hobbies = [
-  'Games (dota 2, ffxiv, hearthstone battlegrounds)',
+  'Dota 2 (immortal btw)',
+  'Hearthstone Battlegrounds (10k mmr btw)', 
+  'FFXIV (week 1 raider btw)',
   'Drawing',
-  'Music (guitar / sing)',
+  'Music',
   'Random things, if im feeling it',
 ];
 ---
@@ -22,13 +31,18 @@ const hobbies = [
         <h1 class="header-h1">ABOUT</h1>
         <p>Hi, I'm bacen.</p>
         <p>I'm a 2nd-year CS student interested in:</p>
-        <ul id="interest-list" class="cycle-list">
+        <ul id="interest-list">
           {interests.map((skill) => <li>{skill}</li>)}
         </ul>
         <p>I have professional experience in data / AI / SWE, but am interested in doing new things.</p>
         <hr />
+        <p>Things I'm currently learning</p>
+        <ul id="learning-list">
+          {learning.map((learning) => <li>{learning}</li>)}
+        </ul>
+        <hr />
         <p>Other things I also do:</p>
-        <ul id="hobby-list" class="cycle-list">
+        <ul id="hobby-list">
           {hobbies.map((hobby) => <li>{hobby}</li>)}
         </ul>
         <hr />
