@@ -1,9 +1,9 @@
 ---
 const pathname = Astro.url.pathname;
 
-const isSoftware = pathname === '/projects/software';
-const isDesign = pathname === '/projects/design';
-const isGames = pathname === '/projects/games';
+const isSoftware = pathname === '/projects/software/';
+const isDesign = pathname === '/projects/design/';
+const isGames = pathname === '/projects/games/';
 ---
 <nav class="work-nav" aria-label="Projects category">
   <a class:list={['nav-item', { active: isSoftware }]} href="/projects/software">SOFTWARE</a>
