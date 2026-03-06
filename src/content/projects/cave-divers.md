@@ -1,13 +1,13 @@
 ---
 title: Cave Diver
 category: games
-coverImage: /resources/cave-diver.png
+coverImage: /resources/cave_diver.png
 date: 2024-07-01
 description: Puzzle-platformer made with Godot
 highlight: 2nd Prize — Century Games Game Jam 2024
 ---
 
-![Cave Diver screenshot](/resources/cave-diver_screenshot.png)
+![Cave Diver screenshot](/resources/cave_diver_screenshot.png)
 
 A puzzle-platformer built for Century Games Game Jam 2024 around the theme "Into the Unknown." Explore dark caves and use fish with special abilities to light up your path forward.
 
