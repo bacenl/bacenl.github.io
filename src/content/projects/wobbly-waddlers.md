@@ -4,7 +4,7 @@ category: games
 coverImage: /resources/wobbly_waddlers.png
 date: 2025-01-27
 description: Snake + Sokoban + Balancing Arena made with Godot
-highlight: Top Prize — NUS Hack&Roll
+highlight: Top Prize — NUS Hack&Roll 2025
 ---
 
 ![Wobbly Waddlers screenshot](/resources/wobbly_waddlers_screenshot.png)
