@@ -3,7 +3,7 @@ title: Drop the Baby
 coverImage: /resources/drop_the_baby.png
 category: games
 date: 2026-01-17
-description: Small Fun Game made with Godot :)
+description: A small fun game made with Godot :)
 highlight: NUS Hack&Roll 2026
 ---
 
