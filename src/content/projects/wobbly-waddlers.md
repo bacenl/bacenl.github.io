@@ -2,7 +2,7 @@
 title: Wobbly Waddlers
 category: games
 coverImage: /resources/wobbly_waddlers.png
-date: 2024-01-01
+date: 2025-01-27
 description: Snake + Sokoban + Balancing Arena made with Godot
 highlight: Top Prize — NUS Hack&Roll
 ---
