@@ -3,7 +3,7 @@ title: Portrait-le
 category: games
 coverImage: /resources/portrait-le.png
 date: 2025-04-20
-description: Portrait Wordle
+description: Portrait Wordle made with Unity
 highlight: Century Games Game Jam 2025
 ---
 

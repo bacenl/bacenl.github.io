@@ -3,7 +3,7 @@ title: Doodle Days
 category: games
 coverImage: /resources/doodle_days.png
 date: 2024-09-17
-description: Doodling Game
+description: Doodling Game made with Godot
 highlight: NUS GDG Game Jam
 ---
 
